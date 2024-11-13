@@ -6,7 +6,7 @@ function Header() {
               <nav>
                   <ul>
                       <li className="center-text">
-                          <a href='#home'>Home 🏠</a>
+                          <a className="nav-links"href='#home'>🏠 Home </a>
                       </li>
                   </ul>
               </nav>

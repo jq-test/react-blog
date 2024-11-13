@@ -11,7 +11,6 @@ This project currently only has a header and main component.
 4. Open http://localhost:5173 in your browser
 
 ## Project Structure
-
 ```
 react-blog/
 ├── .gitignore
@@ -20,26 +19,37 @@ react-blog/
 ├── vite.config.js
 └── src/
     ├── components/
-    │   └── Header.jsx
+    │   └── BlogPost
+    │   └── BlogList
+    │   └── Header
+    ├── data/
+    │   └── post.js
     ├── App.jsx
     ├── main.jsx
     └── index.css
 ```
 
+## Components Structure
+
+- Header: Navigation and site title
+- BlogList: Container for multiple posts
+- BlogPost: Individual blog post display
+
 ## Screenshot
+First Draft <br>
+![Heading Screenshot](./public/headingscreenshot.jpg)
+Desktop Format
+![Blog Screenshot](./public/blogscreenshot.jpg.png)
+Mobile Format <br>
+![Mobile Screenshot](./public/mobilescreenshot.png)
+## Styling Approach
 
-![Screenshot](./public/screenshot.jpg)
+- Color Theme: Purple
+- Added some emojis for contrast.
+- Each blog post is separated into its own container to differentiate between the different posts.
 
-## What I Learned
-
-1. Using echo to create a .gitignore file that ignores multiple files and directories with a single command in the terminal.
-2. A refresher on how to create a React project with Vite.
-
----
-
-This following section inside the file doesn't seem to work.
-
-```
-lsof -i :5173 k
-kill -9 <PID>
-```
+## New Features
+- List of blog Post that contains the title, content, author, date, and time it takes to read. 
+- Blog post with prop types.
+- A separate file to store the blog data.
+- Shadow effect on hover and active.

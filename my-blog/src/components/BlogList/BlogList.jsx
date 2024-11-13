@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-// import BlogPost from "./BlogPost/BlogPost";
+import BlogPost from "../BlogPost/BlogPost";
 import "./BlogList.module.css";
 
 function BlogList({ posts }) {

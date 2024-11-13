@@ -1,19 +1,18 @@
 import PropTypes from "prop-types";
-import "./BlogPost.module.css";
+import styles from "./BlogPost.module.css";
 
 function BlogPost({ title, content, author, date, readTime }) {
   return (
-    <article className="blog-post">
-      <div className="blog-post__header">
-        <h2 className="blog-post__title">{title}</h2>
-        <div className="blog-post__meta">
-          <span className="blog-post__author">By {author}</span>
-          <time className="blog-post__date">{date}</time>
-          <span className="blog-post__read-time">{readTime} min read</span>
+    <article className={styles.blogPost}>
+      <div className={styles.postHeader}>
+        <h2 className={styles.postTitle}>{title}</h2>
+        <div className={styles.postMeta}>
+          <span className={styles.postAuthor}>By {author}</span>
+          <time className={styles.postDate}>{date}</time>
+          <span className={styles.postReadTime}>{readTime} min read</span>
         </div>
       </div>
-
-      <div className="blog-post__content">{content}</div>
+      <div className={styles.blogContent}>{content}</div>
     </article>
   );
 }

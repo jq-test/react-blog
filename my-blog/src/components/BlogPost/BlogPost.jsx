@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import styles from "./BlogPost.module.css";
+import CommentSection from "../CommentSection/CommentSection";  
 import LikeButton from "../LikeButton/LikeButton"
 
 function BlogPost({ title, content, author, date, readTime }) {
@@ -14,8 +15,8 @@ function BlogPost({ title, content, author, date, readTime }) {
         </div>
       </div>
       <div className={styles.blogContent}>{content}</div>
-
-      <div className="blog-post__actions">
+      <div className="blog-post__actions"> 
+        <CommentSection postId={id} />
         <LikeButton initialLikes={0} />
       </div>
     </article>

@@ -32,10 +32,14 @@
     padding: 1rem;
     justify-content: space-between;
   }
+
   
   .postContent {
     line-height: 1.6;
     color: #333;
+  }
+  .postAction {
+    display: inline-flex;
   }
   
   /* Responsive Design */

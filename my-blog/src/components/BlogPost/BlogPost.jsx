@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./BlogPost.module.css";
+import CommentSection from "../CommentSection/CommentSection";  
+import LikeButton from "../LikeButton/LikeButton"
 import { calculateReadTime } from "../../utils/readTime";
+
 function BlogPost({ title, content, author, date, readTime }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [readTime, setReadTime] = useState(0);
@@ -19,6 +22,7 @@ function BlogPost({ title, content, author, date, readTime }) {
 
   return (
     <article className={styles.blogPost}>
+    
       <div className={styles.postHeader}>
         <h2 className={styles.postTitle}>{title}</h2>
         <div className={styles.postMeta}>
@@ -38,6 +42,12 @@ function BlogPost({ title, content, author, date, readTime }) {
       </div>
       
       <div className={styles.blogContent}>{content}</div>
+
+      <div className="blog-post__actions"> 
+        <CommentSection postId={id} />
+        <LikeButton initialLikes={0} />
+      </div>
+
     </article>
   );
 }

@@ -1,7 +1,22 @@
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./BlogPost.module.css";
-
+import { calculateReadTime } from "../../utils/readTime";
 function BlogPost({ title, content, author, date, readTime }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [readTime, setReadTime] = useState(0);
+
+  useEffect(() => {
+    setReadTime(calculateReadTime(content));
+  }, [content]);
+
+  const toggleContent = () => {
+    setIsExpanded((prev) => !prev);
+  };
+
+  const displayContent = isExpanded
+    ? content : content.slice(0, 200) + (content.length > 200 ? "..." : "");
+
   return (
     <article className={styles.blogPost}>
       <div className={styles.postHeader}>
@@ -12,6 +27,16 @@ function BlogPost({ title, content, author, date, readTime }) {
           <span className={styles.postReadTime}>{readTime} min read</span>
         </div>
       </div>
+
+      <div classNAme="blog-post__content">
+        <p> {displayContent} </p>
+        {content.length > 200 && (
+          <button onClick={toggleContent} classNAme="blog-post__expand">
+            { isExpanded ? "Read less" : "Read more" }
+          </button>
+        )}
+      </div>
+      
       <div className={styles.blogContent}>{content}</div>
     </article>
   );

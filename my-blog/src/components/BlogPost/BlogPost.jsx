@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import styles from "./BlogPost.module.css";
+import CommentSection from "../CommentSection/CommentSection";  
 
 function BlogPost({ title, content, author, date, readTime }) {
   return (
@@ -13,7 +14,11 @@ function BlogPost({ title, content, author, date, readTime }) {
         </div>
       </div>
       <div className={styles.blogContent}>{content}</div>
+      
+      <CommentSection postId={id} />
+
     </article>
+
   );
 }
 

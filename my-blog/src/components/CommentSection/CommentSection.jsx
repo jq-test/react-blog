@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import "./CommentSection.module.css";
+import RichTextEditor from "../RichTextEditor/RichTextEditor"
 
 function CommentSection({ postId }) {
     const [comments, setComments] = useState([]);
@@ -38,13 +39,13 @@ function CommentSection({ postId }) {
                             value={newComment}
                             onChange={(e) => setNewComment(e.target.value)}
                             placeholder="Write a comment..."
-                            classNAme="comment-form__input"
+                            className="comment-form__input"
                             rows="3"
                         />
                         <button
                             type="submit"
                             disabled={!newComment.trim()}
-                            classNAme="comment-form__submit"
+                            className="comment-form__submit"
                         >
                             Post Comment
                         </button>

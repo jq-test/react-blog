@@ -5,7 +5,7 @@ import CommentSection from "../CommentSection/CommentSection";
 import LikeButton from "../LikeButton/LikeButton"
 import { calculateReadTime } from "../../utils/readTime";
 
-function BlogPost({ title, content, author, date, readTime }) {
+function BlogPost({ id, title, content, author, date }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [readTime, setReadTime] = useState(0);
 
@@ -22,7 +22,6 @@ function BlogPost({ title, content, author, date, readTime }) {
 
   return (
     <article className={styles.blogPost}>
-    
       <div className={styles.postHeader}>
         <h2 className={styles.postTitle}>{title}</h2>
         <div className={styles.postMeta}>
@@ -32,32 +31,29 @@ function BlogPost({ title, content, author, date, readTime }) {
         </div>
       </div>
 
-      <div classNAme="blog-post__content">
+      <div className="blog-post__content">
         <p> {displayContent} </p>
         {content.length > 200 && (
-          <button onClick={toggleContent} classNAme="blog-post__expand">
+          <button onClick={toggleContent} className="blog-post__expand">
             { isExpanded ? "Read less" : "Read more" }
           </button>
         )}
       </div>
-      
-      <div className={styles.blogContent}>{content}</div>
 
-      <div className="blog-post__actions"> 
-        <CommentSection postId={id} />
-        <LikeButton initialLikes={0} />
+      <div className={styles.postAction}> 
+        <CommentSection postId={id}  />
       </div>
-
+        <LikeButton initialLikes={0} />
     </article>
   );
 }
 
 BlogPost.propTypes = {
-  title: PropTypes.string.required,
-  content: PropTypes.string.required,
-  author: PropTypes.string.required,
-  date: PropTypes.string.required,
-  readTime: PropTypes.number.required,
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
 };
 
 export default BlogPost;

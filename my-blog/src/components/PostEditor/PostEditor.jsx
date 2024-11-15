@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./PostEditor.module.css";
+import "./PostEditor.css";
 import TagInput from '../TagInput/TagInput'
 
 function PostEditor() {
@@ -81,8 +81,8 @@ function PostEditor() {
 
     return (
         <form onSubmit= {handleSubmit} className="post-editor">
-            <div className="form-group">
-                <label htmlFor="title"> Title *</label>
+            <div className="form-group left-text">
+                <label htmlFor="title"> Title:</label>
                 <input
                     type="text"
                     id="title"
@@ -95,8 +95,8 @@ function PostEditor() {
                 {errors.title && <span className="error-message"> {errors.title} </span>}
             </div>
 
-            <div className="form-group">
-                <label htmlFor="content"> Content *</label>
+            <div className="form-group left-text">
+                <label htmlFor="content"> Content:</label>
                 <textarea
                     id="content"
                     name="content"
@@ -111,33 +111,34 @@ function PostEditor() {
                 )}
             </div>
 
-            <TagInput 
-                tags= { formData. tags }
-                onChange = {(tags) =>
-                    handleChange({
+            <div id="tag-cat">
+                    <div className="form-group">
+                        <label htmlFor="category"> Category </label>
+                        <select
+                            id="category"
+                            name="category"
+                            value={formData.category}
+                            onChange={handleChange}
+                        >
+                            <option value="general"> General </option>
+                            <option value="technology"> Technology </option>
+                            <option value="lifestyle"> Lifestyle </option>
+                            <option value="travel"> Travel </option>
+                        </select>
+                    </div>                
+                </div>
+                <TagInput 
+                    tags= { formData. tags }
+                    onChange = {(tags) =>
+                        handleChange({
                         target: { name: "tags" , value: tags },
-                    })
-                }
-                onBlur = {() =>
-                    handleBlur({ target: { name: "tags", value: formData.tags } })
-                }
-                error={errors.tags}
+                        })
+                    }
+                    onBlur = {() =>
+                        handleBlur({ target: { name: "tags", value: formData.tags } })
+                    }
+                    error={errors.tags}
                 />
-
-            <div className="form-group">
-                <label htmlFor="category"> Category </label>
-                <select
-                    id="category"
-                    name="category"
-                    value={formData.category}
-                    onChange={handleChange}
-                >
-                    <option value="general"> General </option>
-                    <option value="technology"> Technology </option>
-                    <option value="lifestyle"> Lifestyle </option>
-                    <option value="travel"> Travel </option>
-                </select>
-            </div>                
 
             <div className="form-group checkbox">
                 <label>
@@ -153,6 +154,9 @@ function PostEditor() {
 
             <button type="submit" className="submit-button">
                 {formData.isPublish ? "Publish Post" : "Save Draft" }
+            </button>
+            <button type="submit" className="submit-button">
+                Submit
             </button>
         </form>
     );

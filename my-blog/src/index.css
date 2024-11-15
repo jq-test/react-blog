@@ -60,8 +60,14 @@ button:focus-visible {
 main {
   padding: 2rem;
 }
+.flex {
+  display: flex;
+}
 .center-text {
   text-align: center;
+}
+.left-text {
+  text-align: left;
 }
 .blog-header {
   padding: 1rem;
@@ -92,7 +98,7 @@ main {
   background-color: #c3aaeb;
   border-radius: 5px;
   box-shadow: 1px 1px 2px #000;
-  margin: 2rem 0;
+  margin: 2rem 0.5rem;
   padding: 0.25rem
 }
 

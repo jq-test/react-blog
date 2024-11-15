@@ -22,8 +22,8 @@ function TagInput({ tags, onChange, onBlur, error }) {
     };
 
     return (
-        <div className="form-group">
-            <label> Tags * </label>
+        <div className="form-group flex">
+            <label> Tags: </label>
             <div className={`tag-input ${error ? "error" : ""}`}>
                 <div className="tag-list">
                 {tags.map((tag) => (

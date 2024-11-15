@@ -10,9 +10,9 @@ function App() {
       <div className="app">
         <Header />
         <main className="main-content">
-        <BlogList posts={posts} />
+          <PostEditor />
+          <BlogList posts={posts} />
       </main>
-        <PostEditor />
     </div>
     </>
   )

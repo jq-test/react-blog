@@ -56,7 +56,7 @@ function PostEditor() {
         const { name, value } = e.target;
         setErrors((prev) => ({
             ...prev,
-            [name]: validateField(name, newValue),
+            [name]: validateField(name, value),
         }));
     }
 

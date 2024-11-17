@@ -1,8 +1,12 @@
 import { useState } from "react";
 import "./PostEditor.css";
-import TagInput from '../TagInput/TagInput'
+import TagInput from '../TagInput/TagInput';
+import useValidation from "../../hooks/useValidateForm";
+import useImageHandler from "../../hooks/useImageHandler";
 
 function PostEditor() {
+    const { validateField } = useValidation();
+    const { file, handleImage } = useImageHandler();
     const [formData, setFormData] = useState({
         title: "",
         content: "",
@@ -10,31 +14,9 @@ function PostEditor() {
         category: "general",
         isPublish: false,
     });
-
     const [errors, setErrors] = useState({});
     const [isDirty, setIsDirty] = useState({})
-    const [file, setFile] = useState();
-    function handleImage(e) {
-        console.log(e.target.files);
-        setFile(URL.createObjectURL(e.target.files[0]));
-    }
 
-    const validateField = (name, value) => {
-        switch(name) {
-            case "title":
-                return value.trim().length < 5
-                ? "Title must be at least 5 characters"
-                : "";
-            case "content":
-                return value.trim().length < 100
-                ? "Content must be at least 100 characters"
-                : "";
-            case "tags":
-                return value.lemgth === 0 ? "At least one tag is required" : "";
-            default:
-                return "";
-        }
-    };
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         const newValue = type === "checkbox" ? checked : value;
@@ -43,12 +25,10 @@ function PostEditor() {
             ...prev,
             [name]: newValue,
         }));
-
         setIsDirty((prev) => ({
             ...prev,
             [name]: true,
         }))
-
         if (isDirty[name]) {
             setErrors((prev) => ({
             ...prev,
@@ -83,13 +63,11 @@ function PostEditor() {
         }
     };
     
-
     return (
         <form onSubmit= {handleSubmit} className="post-editor">
             <div className="form-group left-text">
                 <label htmlFor="title"> Title:</label>
-                <input
-                    type="text"
+                <input type="text"
                     id="title"
                     name="title"
                     value={ formData.title }
@@ -102,8 +80,7 @@ function PostEditor() {
 
             <div className="form-group left-text">
                 <label htmlFor="content"> Content:</label>
-                <textarea
-                    id="content"
+                <textarea id="content"
                     name="content"
                     value={ formData.content }
                     onChange = { handleChange }
@@ -122,40 +99,36 @@ function PostEditor() {
                     <span className="error-message"> {errors.content} </span>
                 )}
             </div>
-            
 
             <div id="tag-cat">
-                    <div className="form-group">
-                        <label htmlFor="category"> Category </label>
-                        <select
-                            id="category"
-                            name="category"
-                            value={formData.category}
-                            onChange={handleChange}>
-                            <option value="general"> General </option>
-                            <option value="technology"> Technology </option>
-                            <option value="lifestyle"> Lifestyle </option>
-                            <option value="travel"> Travel </option>
-                        </select>
-                    </div>                
-                </div>
-                <TagInput 
-                    tags= { formData. tags }
-                    onChange = {(tags) =>
-                        handleChange({
-                        target: { name: "tags" , value: tags },
-                        })
-                    }
-                    onBlur = {() =>
-                        handleBlur({ target: { name: "tags", value: formData.tags } })
-                    }
-                    error={errors.tags}
-                />
+                <div className="form-group">
+                    <label htmlFor="category"> Category </label>
+                    <select id="category"
+                        name="category"
+                        value={formData.category}
+                        onChange={handleChange}>
+                        <option value="general"> General </option>
+                        <option value="technology"> Technology </option>
+                        <option value="lifestyle"> Lifestyle </option>
+                        <option value="travel"> Travel </option>
+                    </select>
+                </div>                
+            </div>
+
+            <TagInput 
+                tags= { formData. tags }
+                onChange = {(tags) => handleChange({
+                    target: { name: "tags" , value: tags },
+                    })
+                }
+                onBlur = {() => handleBlur({ target: { name: "tags", value: formData.tags } })
+                }
+                error={errors.tags}
+            />
 
             <div className="form-group checkbox">
                 <label>
-                    <input
-                        type="checkbox"
+                    <input type="checkbox"
                         name="isPublished"
                         checked={formData.isPublished}
                         onChange={ handleChange }

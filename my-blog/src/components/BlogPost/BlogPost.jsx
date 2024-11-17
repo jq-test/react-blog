@@ -34,15 +34,14 @@ function BlogPost({ id, title, content, author, date }) {
       <div className="blog-post__content">
         <p> {displayContent} </p>
         {content.length > 200 && (
-          <button onClick={toggleContent} className="blog-post__expand">
+          <button onClick={toggleContent} className= {styles.postExpand}>
             { isExpanded ? "Read less" : "Read more" }
           </button>
         )}
       </div>
-
-      <div className={styles.postAction}> 
+      <span className={styles.postAction}> 
         <CommentSection postId={id}  />
-      </div>
+      </span>
         <LikeButton initialLikes={0} />
     </article>
   );

@@ -6,7 +6,10 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-  .blogPost:hover {
+  .postExpand, .postAction {
+    display: flex;
+  }
+  .postExpand:hover {
     box-shadow: 1px 1px 2px;
     cursor: pointer;
   }

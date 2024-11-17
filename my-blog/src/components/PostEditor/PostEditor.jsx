@@ -13,6 +13,11 @@ function PostEditor() {
 
     const [errors, setErrors] = useState({});
     const [isDirty, setIsDirty] = useState({})
+    const [file, setFile] = useState();
+    function handleImage(e) {
+        console.log(e.target.files);
+        setFile(URL.createObjectURL(e.target.files[0]));
+    }
 
     const validateField = (name, value) => {
         switch(name) {
@@ -106,10 +111,18 @@ function PostEditor() {
                     rows = "10"
                     className= {errors.content ? "error" : ""}
                 />
+                {/* Handle Images */}
+                <div className="change-image">
+                    <span className="add-image">Add Image:</span>
+                        <input type="file" onChange={handleImage} />
+                    <img className="uploaded-image" src={file} />
+                </div>
+                
                 {errors.content && (
                     <span className="error-message"> {errors.content} </span>
                 )}
             </div>
+            
 
             <div id="tag-cat">
                     <div className="form-group">
@@ -118,8 +131,7 @@ function PostEditor() {
                             id="category"
                             name="category"
                             value={formData.category}
-                            onChange={handleChange}
-                        >
+                            onChange={handleChange}>
                             <option value="general"> General </option>
                             <option value="technology"> Technology </option>
                             <option value="lifestyle"> Lifestyle </option>

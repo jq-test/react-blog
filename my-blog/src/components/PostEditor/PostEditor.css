@@ -4,6 +4,14 @@
 #tag-cat {
     display: flex;
 }
+.add-image {
+    margin-right: 0.5rem;
+}
+.uploaded-image {
+    width: 25px;
+    height: 25px;
+    margin: auto;
+}
 .tag-remove {
     margin: 0;
     padding: 0.1rem 0.2rem;

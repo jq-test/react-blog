@@ -10,7 +10,7 @@ import styles from "../BlogPost/BlogPost.module.css";
 import PropTypes from 'prop-types';
 import "./PostEditor.css"
 
-export default function ModalLayout({title, content, tags, isPublished}) {
+export default function ModalLayout({title, content, tags, isPublish}) {
   const [layout, setLayout] = React.useState(undefined);
   return (
     <>
@@ -23,7 +23,7 @@ export default function ModalLayout({title, content, tags, isPublished}) {
             setLayout('center');
           }}
         >
-          {isPublished ? "Publish Post" : "Save Draft" }
+          {isPublish ? "Publish Post" : "Save Draft" }
         </Button>
       </Stack>
 
@@ -48,11 +48,11 @@ export default function ModalLayout({title, content, tags, isPublished}) {
                 </span>
                 <br></br>
                   Publish immediately? <span>
-                  {isPublished ? "Yes" : "No, save as draft."}
+                  {isPublish ? "Yes" : "No, save as draft."}
                 </span>
             </article>
             <button type="submit" className="submit-button">
-                {isPublished ? "Submit Post" : "Save Draft" }
+                {isPublish ? "Submit Post" : "Save Draft" }
             </button>
           </DialogContent>
         </ModalDialog>
@@ -66,5 +66,5 @@ ModalLayout.propTypes = {
     title: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
     tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-    isPublished: PropTypes.bool.isRequired,
+    isPublish: PropTypes.bool.isRequired,
 };

@@ -1,40 +1,50 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./PostEditor.css";
 import TagInput from '../TagInput/TagInput';
-import useValidation from "../../hooks/useValidateForm";
-import useImageHandler from "../../hooks/useImageHandler";
 import RichTextEditor from "../RichTextEditor/RichTextEditor";
 import Modal from "../PostEditor/Modal";
+import useValidation from "../../hooks/useValidateForm";
+import useImageHandler from "../../hooks/useImageHandler";
 
 function PostEditor() {
     const { validateField } = useValidation();
     const { file, handleImage } = useImageHandler();
-    const [formData, setFormData] = useState({
-        title: "",
-        content: "",
-        tags: [],
-        category: "general",
-        isPublish: false,
-    });
+
+    const initializeForm = () => {
+    //Get saved form data from local storage
+        const getSaveFormData = localStorage.getItem("formData");
+        return getSaveFormData ? JSON.parse(getSaveFormData) : {
+            title: "",
+            content: "",
+            tags: [],
+            category: "general",
+            isPublish: false,
+        };
+    };
+
+    const [formData, setFormData] = useState(initializeForm());
     const [errors, setErrors] = useState({});
     const [isDirty, setIsDirty] = useState({})
+
+    //Watches for changes and save data to local storage
+    useEffect(() => {
+        const convertToString = JSON.stringify(formData);
+        localStorage.setItem("formData", convertToString);
+    }, [formData]);
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         const newValue = type === "checkbox" ? checked : value;
 
         setFormData((prev) => ({
-            ...prev,
-            [name]: newValue,
+            ...prev, [name]: newValue,
         }));
         setIsDirty((prev) => ({
-            ...prev,
-            [name]: true,
+            ...prev, [name]: true,
         }))
         if (isDirty[name]) {
             setErrors((prev) => ({
-            ...prev,
-            [name]: validateField(name, newValue),
+            ...prev, [name]: validateField(name, newValue),
             }));
         }
     };
@@ -42,8 +52,7 @@ function PostEditor() {
     const handleBlur = (e) => {
         const { name, value } = e.target;
         setErrors((prev) => ({
-            ...prev,
-            [name]: validateField(name, value),
+            ...prev, [name]: validateField(name, value),
         }));
     }
 
@@ -67,17 +76,14 @@ function PostEditor() {
     //Function for Rich Text Editor 
     const handleContentChange = (newContent) => {
         setFormData((prev) => ({
-            ...prev,
-            content: newContent,
+            ...prev, content: newContent,
         }));
         setIsDirty((prev) => ({
-            ...prev,
-            content: true,
+            ...prev, content: true,
         }));
         if (isDirty.content) {
             setErrors((prev) => ({
-                ...prev, 
-                content: validateField("content", newContent)
+            ...prev, content: validateField("content", newContent)
             }))
         }
     }
@@ -92,22 +98,19 @@ function PostEditor() {
                     value={ formData.title }
                     onChange={ handleChange }
                     onBlur = { handleBlur }
-                    className = { errors.title ? "error" : ""}
-                /> 
+                    className = { errors.title ? "error" : ""}/> 
                 {errors.title && <span className="error-message"> {errors.title} </span>}
             </div>
-
+            {/* User write blog post here */}
             <div className="form-group left-text">
                 <label htmlFor="content"> Content:</label>
-                <RichTextEditor
-                    id="content"
+                <RichTextEditor id="content"
                     name="content"
                     value={ formData.content }
                     onChange = { handleContentChange }
                     onBlur = { handleBlur }
                     rows = "10"
-                    className= {errors.content ? "error" : ""}
-                />
+                    className= {errors.content ? "error" : ""}/>
                 {/* Handle Images */}
                 <div className="change-image">
                     <span className="add-image">Add Image:</span>
@@ -149,23 +152,20 @@ function PostEditor() {
             <div className="form-group checkbox">
                 <label>
                     <input type="checkbox"
-                        name="isPublished"
-                        checked={formData.isPublished}
-                        onChange={ handleChange }
-                    />
+                        name="isPublish"
+                        checked={formData.isPublish}
+                        onChange={ handleChange } />
                     Publish immediately
                 </label>
             </div>
 
             {/* Preview blog post */}
-            <Modal 
-            title={formData.title}
+            <Modal title={formData.title}
             content={formData.content}
             tags={formData.tags}
-            isPublished={formData.isPublished} 
-            />
+            isPublish={formData.isPublish} />
         </form>
-    );
-}
+        );
+    }
 
 export default PostEditor;

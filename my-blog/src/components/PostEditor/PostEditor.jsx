@@ -4,6 +4,7 @@ import TagInput from '../TagInput/TagInput';
 import useValidation from "../../hooks/useValidateForm";
 import useImageHandler from "../../hooks/useImageHandler";
 import RichTextEditor from "../RichTextEditor/RichTextEditor";
+import Modal from "../PostEditor/Modal";
 
 function PostEditor() {
     const { validateField } = useValidation();
@@ -81,7 +82,6 @@ function PostEditor() {
         }
     }
     
-    
     return (
         <form onSubmit= {handleSubmit} className="post-editor">
             <div className="form-group left-text">
@@ -99,7 +99,6 @@ function PostEditor() {
 
             <div className="form-group left-text">
                 <label htmlFor="content"> Content:</label>
-                {/* <textarea  */}
                 <RichTextEditor
                     id="content"
                     name="content"
@@ -158,12 +157,13 @@ function PostEditor() {
                 </label>
             </div>
 
-            <button type="submit" className="submit-button">
-                {formData.isPublish ? "Publish Post" : "Save Draft" }
-            </button>
-            <button type="submit" className="submit-button">
-                Submit
-            </button>
+            {/* Preview blog post */}
+            <Modal 
+            title={formData.title}
+            content={formData.content}
+            tags={formData.tags}
+            isPublished={formData.isPublished} 
+            />
         </form>
     );
 }

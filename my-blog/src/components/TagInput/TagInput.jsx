@@ -38,15 +38,16 @@ function TagInput({ tags, onChange, onBlur, error }) {
                         </button>
                     </span>
                 ))}
-            </div>
-            <input
-              type="text"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              onKeyDown={handleKeyDown}
-              onBlur={onBlur}
-              placeholder="Type and press Enter to add tags"
-              />
+                <input
+                      type="text"
+                      value={inputValue}
+                      onChange={(e) => setInputValue(e.target.value)}
+                      onKeyDown={handleKeyDown}
+                      onBlur={onBlur}
+                      placeholder="Type and press Enter to add tags"
+                      className="tag-input"
+                      />
+                </div>
             </div>
             {error && <span className="error-message"> {error} </span>}
         </div>

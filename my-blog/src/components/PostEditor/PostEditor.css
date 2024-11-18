@@ -17,6 +17,6 @@
     padding: 0.1rem 0.2rem;
     background-color: lightgrey;
 }
-/* .tag {
-    display: block;
-} */
+.change-image {
+    display: flex;
+}

@@ -10,7 +10,7 @@ const useValidation = () => {
                 ? "Content must be at least 100 characters"
                 : "";
             case "tags":
-                return value.lemgth === 0 ? "At least one tag is required" : "";
+                return value.length === 0 ? "At least one tag is required" : "";
             default:
                 return "";
         }

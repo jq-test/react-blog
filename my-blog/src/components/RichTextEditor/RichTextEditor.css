@@ -1,0 +1,13 @@
+.rich-editor {
+    display: flex;
+    flex-direction: column;
+}
+.toolbar-button {
+    padding: 0.25rem 0.75rem;
+    margin: 0.25rem;
+    font-size: 0.75rem;
+    background-color: rgb(243, 203, 243);
+}
+.toolbar-button:hover {
+    box-shadow: 1px 1px 1px;
+}

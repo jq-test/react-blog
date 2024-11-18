@@ -3,6 +3,7 @@ import "./PostEditor.css";
 import TagInput from '../TagInput/TagInput';
 import useValidation from "../../hooks/useValidateForm";
 import useImageHandler from "../../hooks/useImageHandler";
+import RichTextEditor from "../RichTextEditor/RichTextEditor";
 
 function PostEditor() {
     const { validateField } = useValidation();
@@ -62,6 +63,24 @@ function PostEditor() {
             console.log("Form submitted: ", formData);
         }
     };
+    //Function for Rich Text Editor 
+    const handleContentChange = (newContent) => {
+        setFormData((prev) => ({
+            ...prev,
+            content: newContent,
+        }));
+        setIsDirty((prev) => ({
+            ...prev,
+            content: true,
+        }));
+        if (isDirty.content) {
+            setErrors((prev) => ({
+                ...prev, 
+                content: validateField("content", newContent)
+            }))
+        }
+    }
+    
     
     return (
         <form onSubmit= {handleSubmit} className="post-editor">
@@ -80,10 +99,12 @@ function PostEditor() {
 
             <div className="form-group left-text">
                 <label htmlFor="content"> Content:</label>
-                <textarea id="content"
+                {/* <textarea  */}
+                <RichTextEditor
+                    id="content"
                     name="content"
                     value={ formData.content }
-                    onChange = { handleChange }
+                    onChange = { handleContentChange }
                     onBlur = { handleBlur }
                     rows = "10"
                     className= {errors.content ? "error" : ""}

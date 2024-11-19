@@ -7,12 +7,14 @@ function BlogList({ posts }) {
     <div className="blog-list">
       {posts.map((post) => (
         <BlogPost
+          id={post.id}
           key={post.id}
           title={post.title}
           content={post.content}
           author={post.author}
           date={post.date}
           readTime={post.readTime}
+          isPublish={post.isPublished}
         />
       ))}
     </div>
@@ -22,14 +24,15 @@ function BlogList({ posts }) {
 BlogList.propTypes = {
   posts: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.required,
-      title: PropTypes.string.required,
-      content: PropTypes.string.required,
-      author: PropTypes.string.required,
-      date: PropTypes.string.required,
-      readTime: PropTypes.number.required,
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+      readTime: PropTypes.number.isRequired,
+      isPublished: PropTypes.bool.isRequired,
     })
-  ).required,
+  ).isRequired,
 };
 
 export default BlogList;

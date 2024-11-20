@@ -1,5 +1,6 @@
 import { memo } from "react";
 import PropTypes from "prop-types";
+
 // import "./BlogFilters.css";
 
 const BlogFilters = memo(function BlogFilters({
@@ -9,7 +10,7 @@ const BlogFilters = memo(function BlogFilters({
   authors,
   allTags,
 }) {
-  if (typeof category === "string") {
+  if (typeof categories === "string") {
   return (
     <div className="blog-filters">
       <div className="filter-group">

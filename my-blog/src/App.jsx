@@ -5,11 +5,20 @@ import { posts } from "./data/posts";
 import { useState } from "react";
 import { posts as initialPosts } from "./data/posts";
 import BlogSearch from "./components/BlogSearch/BlogSearch";
-// import BlogFilters from "./components/BlogFilters/BlogFilters";
+import BlogFilters from "./components/BlogFilters/BlogFilters";
 // import Pagination from "./components/Pagination/Pagination";
 
 function App() {
   const [posts, setPosts] = useState(initialPosts);
+  // const filters = {
+  //   category: "React", 
+  //   author: "Bob Joe",
+  //   tags: ["React", "JavaScript"],
+  // }
+
+  // const categories = ["React"]
+  // const authors = ["Bob Joe"]
+  // const allTags = ["React"]
 
   function addPost(post) {
     post.id = posts.length + 1;
@@ -21,7 +30,7 @@ function App() {
       <div className="app">
         <Header />
         <BlogSearch />
-        {/* <BlogFilters /> */}
+        <BlogFilters />
         <main className="main-content">
           <PostEditor addPost={addPost}/>
           {/* <Pagination /> */}

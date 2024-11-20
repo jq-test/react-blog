@@ -14,7 +14,7 @@ function BlogList({ posts }) {
           author={post.author}
           date={post.date}
           readTime={post.readTime}
-          isPublish={post.isPublished}
+          isPublished={post.isPublished}
         />
       ))}
     </div>

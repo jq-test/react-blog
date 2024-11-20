@@ -61,8 +61,6 @@ function OpenModal({ title, content, tags, isPublished, addPost }) {
 
 OpenModal.propTypes = {
   title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
   isPublished: PropTypes.bool.isRequired,

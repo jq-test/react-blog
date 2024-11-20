@@ -20,7 +20,8 @@ function PostEditor({ addPost }) {
       : {
           title: "",
           content: "",
-          tags: [],
+          author: "",
+          allTags: ["React"],
           category: "general",
           isPublished: false,
         };

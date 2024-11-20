@@ -1,7 +1,5 @@
 import { memo } from "react";
 import PropTypes from "prop-types";
-import { useSearch } from "../../hooks/useSearch";
-
 // import "./BlogSearch.css";
 
 

@@ -10,7 +10,7 @@ const BlogFilters = memo(function BlogFilters({
   authors,
   allTags,
 }) {
-  if (typeof categories === "string") {
+
   return (
     <div className="blog-filters">
       <div className="filter-group">
@@ -66,7 +66,7 @@ const BlogFilters = memo(function BlogFilters({
     </div>
     );
   }
-});
+);
 
 BlogFilters.propTypes = {
   filters: PropTypes.shape({

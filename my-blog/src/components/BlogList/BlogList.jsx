@@ -18,13 +18,15 @@ function BlogList({ posts }) {
     filteredItems,
     categories,
     authors,
-    allTags, } = useFilters(posts);
+    allTags, 
+  } = useFilters(posts);
 
   const {
     searchTerm,
     handleSearch,
     results: searchResults,
-    isSearching, } = useSearch(filteredItems);
+    isSearching, 
+  } = useSearch(filteredItems);
 
   const displayedPosts = searchResults;
   const totalPages = Math.ceil(displayedPosts.length / POSTS_PER_PAGE);
@@ -50,6 +52,7 @@ function BlogList({ posts }) {
           authors={authors}
           allTags={allTags}
         />
+        {/* <button type="reset" className="blog-clear" value="Reset"> */}
       </div>
 
       {currentPosts.length > 0 ? (
@@ -70,7 +73,7 @@ function BlogList({ posts }) {
       )}
     </div>
     
-    <div className="blog-list">
+    {/* <div className="blog-list">
       {posts.map((post) => (
         <BlogPost
           id={post.id}
@@ -83,7 +86,7 @@ function BlogList({ posts }) {
           isPublished={post.isPublished}
         />
       ))}
-    </div>
+    </div> */}
     </>
   );
 }

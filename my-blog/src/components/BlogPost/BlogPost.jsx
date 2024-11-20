@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./BlogPost.module.css";
-import CommentSection from "../CommentSection/CommentSection";  
-import LikeButton from "../LikeButton/LikeButton"
+import CommentSection from "../CommentSection/CommentSection";
+import LikeButton from "../LikeButton/LikeButton";
 import { calculateReadTime } from "../../utils/readTime";
 
-function BlogPost({ id, title, content, author, date }) {
+function BlogPost({ id, title, content, author, date, isPublished }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [readTime, setReadTime] = useState(0);
 
@@ -18,7 +18,8 @@ function BlogPost({ id, title, content, author, date }) {
   };
 
   const displayContent = isExpanded
-    ? content : content.slice(0, 200) + (content.length > 200 ? "..." : "");
+    ? content
+    : content.slice(0, 200) + (content.length > 200 ? "..." : "");
 
   return (
     <article className={styles.blogPost}>
@@ -34,15 +35,16 @@ function BlogPost({ id, title, content, author, date }) {
       <div className="blog-post__content">
         <p> {displayContent} </p>
         {content.length > 200 && (
-          <button onClick={toggleContent} className= {styles.postExpand}>
-            { isExpanded ? "Read less" : "Read more" }
+          <button onClick={toggleContent} className={styles.postExpand}>
+            {isExpanded ? "Read less" : "Read more"}
           </button>
         )}
       </div>
-      <span className={styles.postAction}> 
-        <CommentSection postId={id}  />
+      <p> {isPublished ? "Published" : "Draft"} </p>
+      <span className={styles.postAction}>
+        <CommentSection postId={id} />
       </span>
-        <LikeButton initialLikes={0} />
+      <LikeButton initialLikes={0} />
     </article>
   );
 }
@@ -53,6 +55,7 @@ BlogPost.propTypes = {
   content: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
+  isPublished: PropTypes.bool.isRequired,
 };
 
 export default BlogPost;

@@ -6,6 +6,7 @@ export const posts = [
       author: "Jane Doe",
       date: "2024-03-15",
       readTime: 5,
+      isPublished: true,
     },
     {
       id: 2,
@@ -14,6 +15,7 @@ export const posts = [
       author: "John Smith",
       date: "2024-03-16",
       readTime: 3,
+      isPublished: true,
     },
     {
       id: 3,
@@ -22,6 +24,7 @@ export const posts = [
       author: "Bobby Joe",
       date: "2024-03-17",
       readTime: 10,
+      isPublished: true,
     },
     {
       id: 4,
@@ -30,5 +33,6 @@ export const posts = [
       author: "Chris Jon",
       date: "2024-03-18",
       readTime: 4,
+      isPublished: true,
     },
   ];

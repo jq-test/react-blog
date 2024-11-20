@@ -9,8 +9,12 @@ import PropTypes from "prop-types";
 import Button from "@mui/joy/Button";
 import Stack from "@mui/joy/Stack";
 
-function OpenModal({ title, content, tags, isPublished, addPost }) {
+function OpenModal({ title, content, tags, isPublished, handleSubmit }) {
   const [layout, setLayout] = React.useState(undefined);
+  function closeModalHandleSubmit(e) {
+    handleSubmit(e);
+    setLayout(undefined);
+  }
   return (
     <>
       <React.Fragment>
@@ -48,7 +52,11 @@ function OpenModal({ title, content, tags, isPublished, addPost }) {
                 Publish immediately?{" "}
                 <span>{isPublished ? "Yes" : "No, save as draft."}</span>
               </article>
-              <button type="submit" className="submit-button">
+              <button
+                type="submit"
+                className="submit-button"
+                onClick={closeModalHandleSubmit}
+              >
                 {isPublished ? "Submit Post" : "Save Draft"}
               </button>
             </DialogContent>
@@ -61,10 +69,12 @@ function OpenModal({ title, content, tags, isPublished, addPost }) {
 
 OpenModal.propTypes = {
   title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
   isPublished: PropTypes.bool.isRequired,
-  addPost: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 };
 
 export default OpenModal;

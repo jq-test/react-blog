@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./PostEditor.css";
 import TagInput from "../TagInput/TagInput";
 import RichTextEditor from "../RichTextEditor/RichTextEditor";
-import Modal from "../PostEditor/Modal";
+import Modal from "../Modal/Modal";
 import useValidation from "../../hooks/useValidateForm";
 import useImageHandler from "../../hooks/useImageHandler";
 import Button from "@mui/joy/Button";
@@ -20,15 +20,16 @@ function PostEditor({ addPost }) {
       : {
           title: "",
           content: "",
+          tags: [],
           author: "",
-          allTags: ["React"],
+          readTime: 0,
           category: "general",
           isPublished: false,
         };
   };
 
   const [formData, setFormData] = useState(initializeForm());
-  const [saveDraft, setSaveDraft] = useState(false);
+  // const [saveDraft, setSaveDraft] = useState(false);
   const [errors, setErrors] = useState({});
   const [isDirty, setIsDirty] = useState({});
 
@@ -37,10 +38,10 @@ function PostEditor({ addPost }) {
     const convertToString = JSON.stringify(formData);
     localStorage.setItem("formData", convertToString);
   }, [formData]);
-  useEffect(() => {
-    const convertToString = JSON.stringify(saveDraft);
-    localStorage.setItem("saveDraft", convertToString);
-  }, [saveDraft]);
+  // useEffect(() => {
+  //   const convertToString = JSON.stringify(saveDraft);
+  //   localStorage.setItem("saveDraft", convertToString);
+  // }, [saveDraft]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -95,6 +96,7 @@ function PostEditor({ addPost }) {
       const newPost = {
         ...formData,
         author: "JQ",
+        readTime: 1,
         date: new Date().toLocaleDateString(),
       };
       addPost(newPost);
@@ -215,7 +217,7 @@ function PostEditor({ addPost }) {
         content={formData.content}
         tags={formData.tags}
         isPublished={formData.isPublished}
-        addPost={addPost}
+        handleSubmit={handleSubmit}
       />
     </form>
   );

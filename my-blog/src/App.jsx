@@ -4,6 +4,9 @@ import PostEditor from "./components/PostEditor/PostEditor";
 import { posts } from "./data/posts";
 import { useState } from "react";
 import { posts as initialPosts } from "./data/posts";
+import BlogSearch from "./components/BlogSearch/BlogSearch";
+// import BlogFilters from "./components/BlogFilters/BlogFilters";
+// import Pagination from "./components/Pagination/Pagination";
 
 function App() {
   const [posts, setPosts] = useState(initialPosts);
@@ -17,8 +20,11 @@ function App() {
     <>
       <div className="app">
         <Header />
+        <BlogSearch />
+        {/* <BlogFilters /> */}
         <main className="main-content">
           <PostEditor addPost={addPost}/>
+          {/* <Pagination /> */}
           <BlogList posts={posts} />
       </main>
     </div>

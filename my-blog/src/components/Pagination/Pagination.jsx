@@ -1,6 +1,6 @@
 import { memo } from "react";
 import PropTypes from "prop-types";
-// import "./Pagination.css";
+import "./Pagination.css";
 
 const Pagination = memo(function Pagination({
   currentPage,

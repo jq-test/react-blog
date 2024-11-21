@@ -4,6 +4,7 @@ import Layout from "../components/Layout/Layout";
 import BlogList from "../components/BlogList/Bloglist";
 import PostEditor from "../components/PostEditor/PostEditor"
 import NotFound from "../components/NotFound/NotFound";
+import SavedDraft from "../components/PostEditor/SavedDrafts"
 // import { posts } from "../data/posts"
 import { posts as initialPosts } from "../data/posts";
 import { addPost } from "../utils/addPost";
@@ -34,6 +35,10 @@ export const AppRouter = createBrowserRouter([
         // element: <PostEditor addPost={addPost}/>,
         element: <PostEditor addPost={addPost} posts={initialPosts}/>,
       },
+      {
+        path: "saveDraft",
+        element: <SavedDraft />
+      }
     ],
   },
 ]);

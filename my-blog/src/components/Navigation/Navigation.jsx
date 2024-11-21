@@ -7,9 +7,10 @@ function Navigation() {
   const location = useLocation();
 
   const navItems = [
-    { path: "/", label: "Home" },
+    { path: "/", label: "🏠 All Posts" },
     // { path: "/posts", label: "Published Blog" },
-    { path: "/newPost", label: "New Post" },
+    { path: "/newPost", label: "📔 +New Posts" },
+    { path: "/saveDraft", label: "📃 Draft Posts"}
     // { path: "/profile", label: "Profile" },
   ];
 

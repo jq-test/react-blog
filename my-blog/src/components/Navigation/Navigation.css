@@ -1,0 +1,17 @@
+.navigation__menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 1rem;
+    display: flex; /* Make navigation items horizontal */
+  }
+  
+  .navigation__item {
+    margin-right: 15px; /* Space between navigation items */
+  }
+  
+  .navigation__link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  

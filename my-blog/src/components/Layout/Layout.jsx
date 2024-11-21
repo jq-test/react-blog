@@ -17,6 +17,7 @@ function Layout() {
         <Sidebar className="layout__sidebar" />
       </div>
 
+        <footer> My Cool Blog 2024 </footer>
       {/* <Footer /> */}
     </div>
   );

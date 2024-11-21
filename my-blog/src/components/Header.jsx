@@ -1,8 +1,9 @@
 function Header() {
     return (
       <>
-          <header className="blog-header">
-              <h1> My Cool Blog 😎</h1>
+        <h1>
+          <header className="blog-header sticky"> 
+                My Cool Blog 😎
               {/* <nav>
                   <ul>
                       <li className="center-text">
@@ -13,6 +14,7 @@ function Header() {
                   </ul>
               </nav> */}
           </header>
+          </h1>
       </>
     );
   }

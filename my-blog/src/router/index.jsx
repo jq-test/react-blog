@@ -1,22 +1,22 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../components/Layout/Layout";
-// import Navigation from "../components/Navigation/Navigation";
 import BlogList from "../components/BlogList/Bloglist";
 import PostEditor from "../components/PostEditor/PostEditor"
 import NotFound from "../components/NotFound/NotFound";
 import SavedDraft from "../components/PostEditor/SavedDrafts"
-// import { posts } from "../data/posts"
 import { posts as initialPosts } from "../data/posts";
 import { addPost } from "../utils/addPost";
-// import PostDetail from "../components/PostDetail/PostDetail";
+import { getPost } from "../utils/getPost"
+import PostDetail from "../components/PostDetail/PostDetail";
+import Root from "../router/root"
 // import NewPost from "../components/NewPost/NewPost";
 // import EditPost from "../components/EditPost/EditPost";
 // import Profile from "../components/Profile/Profile";
 
-export const AppRouter = createBrowserRouter([
+export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <Layout />, //Contains Nav, Outlet, Sidebar 
     errorElement: <NotFound />,
     children: [
       {
@@ -25,10 +25,14 @@ export const AppRouter = createBrowserRouter([
         loader: () => ({ posts: initialPosts }),
         // loader: () => ({ posts }),
       },
-    //   {
-    //     path: "posts",
-    //     element: <BlogList posts={posts}/>
-    //   },
+      {
+        path: "posts/:postid",
+        element: <PostDetail />,
+        loader: async ({ params }) => {
+          const post = await getPost(params.postid);
+          return { post };
+        },
+      },
       {
         // path: ":id/edit",
         path: "newPost",

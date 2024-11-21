@@ -1,9 +1,7 @@
-// root.jsx
-
 import { useNavigate } from "react-router-dom";
-import "./Sidebar.css";
+// import "./Sidebar.css";
 
-function Sidebar() {
+export default function Root() {
   const navigate = useNavigate();
 
   const categories = [
@@ -61,5 +59,3 @@ function Sidebar() {
     </aside>
   );
 }
-
-export default Sidebar;

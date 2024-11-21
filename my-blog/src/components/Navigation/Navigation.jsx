@@ -19,7 +19,7 @@ function Navigation() {
   };
 
   return (
-    <nav className="navigation">
+    <nav className="navigation breadcrumb">
       <div className="navigation__brand">
       <h1><header className="blog-header sticky"> 
           My Cool Blog 😎

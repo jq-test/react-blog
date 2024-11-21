@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import { useState } from "react";
 import { useSearch } from "../../hooks/useSearch";
 import { useFilters } from "../../hooks/useFilters";
+import { usePagination } from "../../hooks/usePagination";
 import BlogSearch from "../BlogSearch/BlogSearch";
 import BlogFilters from "../BlogFilters/BlogFilters";
 import BlogPost from "../BlogPost/BlogPost";
@@ -14,7 +15,7 @@ const POSTS_PER_PAGE = 5;
 // function BlogList({ posts }) {
 function BlogList() {
   const { posts } = useLoaderData();
-  const [currentPage, setCurrentPage] = useState(1);
+
   const {
     filters,
     handleFilterChange,
@@ -31,13 +32,16 @@ function BlogList() {
     isSearching, 
   } = useSearch(filteredItems);
 
-  const displayedPosts = searchResults;
-  const totalPages = Math.ceil(displayedPosts.length / POSTS_PER_PAGE);
-
-  const currentPosts = displayedPosts.slice(
-    (currentPage - 1) * POSTS_PER_PAGE,
-    currentPage * POSTS_PER_PAGE
-  );
+  const {
+    items: currentPosts,
+    currentPage,
+    totalPages,
+    goToPage,
+    nextPage,
+    prevPage,
+    hasNext,
+    hasPrev,
+  } = usePagination(searchResults, POSTS_PER_PAGE);
 
   return (
     <>
@@ -68,7 +72,12 @@ function BlogList() {
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}
-            onPageChange={setCurrentPage}
+            onPageChange={goToPage}
+            nextPage={nextPage}
+            prevPage={prevPage}
+            hasNext={hasNext}
+            hasPrev={hasPrev}
+            // onPageChange={setCurrentPage}
           />
         </>
       ) : (
@@ -76,6 +85,15 @@ function BlogList() {
       )}
     </div>
     
+ {/* const [currentPage, setCurrentPage] = useState(1); */}
+ 
+   {/* const displayedPosts = searchResults;
+   const totalPages = Math.ceil(displayedPosts.length / POSTS_PER_PAGE)
+   const currentPosts = displayedPosts.slice(
+     (currentPage - 1) * POSTS_PER_PAGE,
+     currentPage * POSTS_PER_PAGE
+   ); */}
+
     {/* <div className="blog-list">
       {posts.map((post) => (
         <BlogPost

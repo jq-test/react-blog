@@ -8,7 +8,7 @@ import { posts as initialPosts } from "../data/posts";
 import { addPost } from "../utils/addPost";
 import { getPost } from "../utils/getPost"
 import PostDetail from "../components/PostDetail/PostDetail";
-import Root from "../router/root"
+// import Root from "../router/root"
 // import NewPost from "../components/NewPost/NewPost";
 // import EditPost from "../components/EditPost/EditPost";
 // import Profile from "../components/Profile/Profile";

@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { useLoaderData } from "react-router-dom";
 import { useState } from "react";
 import { useSearch } from "../../hooks/useSearch";
 import { useFilters } from "../../hooks/useFilters";
@@ -10,7 +11,9 @@ import "./BlogList.module.css";
 
 const POSTS_PER_PAGE = 5;
 
-function BlogList({ posts }) {
+// function BlogList({ posts }) {
+function BlogList() {
+  const { posts } = useLoaderData();
   const [currentPage, setCurrentPage] = useState(1);
   const {
     filters,

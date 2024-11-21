@@ -3,7 +3,7 @@ function Header() {
       <>
           <header className="blog-header">
               <h1> My Cool Blog 😎</h1>
-              <nav>
+              {/* <nav>
                   <ul>
                       <li className="center-text">
                           <a className="nav-links"href='#home'>🏠 Home </a>
@@ -11,7 +11,7 @@ function Header() {
                           <a className="nav-links" href='#draft'> 📔Published</a>
                       </li>
                   </ul>
-              </nav>
+              </nav> */}
           </header>
       </>
     );

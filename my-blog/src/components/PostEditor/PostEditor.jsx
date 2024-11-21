@@ -122,6 +122,7 @@ function PostEditor({ addPost }) {
 
   return (
     <form onSubmit={handleSubmit} className="post-editor">
+      <h1> New Post </h1>
       <div className="form-group left-text">
         <label htmlFor="title"> Title:</label>
         <input

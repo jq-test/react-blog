@@ -34,7 +34,7 @@ function CommentSection({ postId }) {
 
             {isExpanded && (
                 <>
-                    <form onSubmit={handleSubmit} classNAme="comment-form">
+                    <form onSubmit={handleSubmit} className="comment-form">
                         <textarea
                             value={newComment}
                             onChange={(e) => setNewComment(e.target.value)}

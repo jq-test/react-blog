@@ -1,6 +1,5 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { useState } from "react";
-import Header from "../Header"
 import "./Navigation.css";
 
 function Navigation() {
@@ -21,7 +20,9 @@ function Navigation() {
   return (
     <nav className="navigation">
       <div className="navigation__brand">
-        <Header />
+      <h1><header className="blog-header sticky"> 
+          My Cool Blog 😎
+      </header></h1>
     
       {/* <button
         className="navigation__toggle"

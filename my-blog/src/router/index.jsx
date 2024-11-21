@@ -4,8 +4,8 @@ import Layout from "../components/Layout/Layout";
 import BlogList from "../components/BlogList/Bloglist";
 import PostEditor from "../components/PostEditor/PostEditor"
 import NotFound from "../components/NotFound/NotFound";
-import { posts } from "../data/posts"
-// import { posts as initialPosts } from "../data/posts";
+// import { posts } from "../data/posts"
+import { posts as initialPosts } from "../data/posts";
 import { addPost } from "../utils/addPost";
 // import PostDetail from "../components/PostDetail/PostDetail";
 // import NewPost from "../components/NewPost/NewPost";
@@ -21,7 +21,8 @@ export const AppRouter = createBrowserRouter([
       {
         index: true,
         element: <BlogList />,
-        loader: () => ({ posts }),
+        loader: () => ({ posts: initialPosts }),
+        // loader: () => ({ posts }),
       },
     //   {
     //     path: "posts",
@@ -30,7 +31,8 @@ export const AppRouter = createBrowserRouter([
       {
         // path: ":id/edit",
         path: "newPost",
-        element: <PostEditor addPost={addPost}/>,
+        // element: <PostEditor addPost={addPost}/>,
+        element: <PostEditor addPost={addPost} posts={initialPosts}/>,
       },
     ],
   },

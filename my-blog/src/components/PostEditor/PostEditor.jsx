@@ -8,9 +8,12 @@ import useImageHandler from "../../hooks/useImageHandler";
 import Button from "@mui/joy/Button";
 import Stack from "@mui/joy/Stack";
 
-function PostEditor({ addPost }) {
+// function PostEditor({ addPost }) {
+  function PostEditor({ addPost, posts }) {
   const { validateField } = useValidation();
   const { file, handleImage } = useImageHandler();
+  const [allPosts, setPosts] = useState(posts);
+  // const [allPosts, setPosts] = useState(posts);
 
   const initializeForm = () => {
     //Get saved form data from local storage
@@ -99,7 +102,8 @@ function PostEditor({ addPost }) {
         readTime: 1,
         date: new Date().toLocaleDateString(),
       };
-      addPost(newPost);
+      // addPost(newPost);
+      addPost(newPost, allPosts, setPosts)
     }
   };
   //Function for Rich Text Editor

@@ -35,12 +35,12 @@ export const router = createBrowserRouter([
       },
       {
         // path: ":id/edit",
-        path: "newPost",
+        path: "newpost",
         // element: <PostEditor addPost={addPost}/>,
         element: <PostEditor addPost={addPost} posts={initialPosts}/>,
       },
       {
-        path: "saveDraft",
+        path: "savedraft",
         element: <SavedDraft />
       }
     ],

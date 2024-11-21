@@ -2,15 +2,24 @@ import { NavLink, useLocation } from "react-router-dom";
 import { useState } from "react";
 import "./Navigation.css";
 
+export const ROUTES = {
+  HOME: '/',
+  NEWPOST: '/newpost',
+  SAVEDRAFT: '/savedraft',
+  BLOG_POST: (id) => `/posts/${id}`,
+  ADMIN: '/admin',
+  ADMIN_POSTS:'/admin/posts'
+
+}
 function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
   const navItems = [
-    { path: "/", label: "🏠 All Posts" },
+    { path: ROUTES.HOME, label: "🏠 All Posts" },
     // { path: "/posts", label: "Published Blog" },
-    { path: "/newPost", label: "📔 +New Posts" },
-    { path: "/saveDraft", label: "📃 Draft Posts"}
+    { path: ROUTES.NEWPOST, label: "📔 +New Posts" },
+    { path: ROUTES.SAVEDRAFT, label: "📃 Draft Posts"}
     // { path: "/profile", label: "Profile" },
   ];
 

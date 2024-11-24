@@ -1,5 +1,5 @@
 button {
-    background-color: rgb(240, 216, 240);
+    background-color: var(--color-btn-bg);
 }
 #title {
     width: 100%;

@@ -1,14 +1,16 @@
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router/index"
-
+import { useTheme } from "./contexts/ThemeProvider";
+import ThemeToggle from "./contexts/ThemeToggle";
 
 function App() {
   // const [posts, setPosts] = useState(initialPosts);
-  
+  const { toggleTheme, isDark } = useTheme();
   return (
     <>
       <div className="app">
         <main className="main-content">
+          <ThemeToggle />
           <RouterProvider router = {router} />
       </main>
     </div>

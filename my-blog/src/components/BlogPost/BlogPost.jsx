@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./BlogPost.module.css";
 import CommentSection from "../CommentSection/CommentSection";
-import LikeButton from "../LikeButton/LikeButton";
+import LikeButton from "../LikeButton/LikeButton2";
 import { calculateReadTime } from "../../utils/readTime";
 
 function BlogPost({ id, title, content, author, date, isPublished }) {

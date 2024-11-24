@@ -2,7 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import PropTypes from "prop-types";
 import styles from "../BlogPost/BlogPost.module.css";
 import CommentSection from "../CommentSection/CommentSection";
-import LikeButton from "../LikeButton/LikeButton";
+import LikeButton from "../LikeButton/LikeButton2";
 
 function PostDetail() {
   const { post } = useLoaderData();

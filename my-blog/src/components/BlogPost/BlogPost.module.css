@@ -2,7 +2,7 @@
     max-width: 800px;
     margin: 2rem auto;
     padding: 1.5rem 1.25rem;
-    background: rgb(246, 237, 247);
+    background: var(--color-post-bg);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
@@ -23,13 +23,12 @@
   
   .postTitle {
     font-size: 1.75rem;
-    color: #2c3e50;
+    color: var(--text-color);
     margin-bottom: 0.5rem;
   }
   .postMeta {
     display: flex;
     gap: 1rem;
-    color: #666;
     font-size: 0.75rem;
     text-align: center;
     padding: 1rem;

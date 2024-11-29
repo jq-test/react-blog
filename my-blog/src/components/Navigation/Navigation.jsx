@@ -8,8 +8,8 @@ export const ROUTES = {
   SAVEDRAFT: '/savedraft',
   BLOG_POST: (id) => `/posts/${id}`,
   ADMIN: '/admin',
-  ADMIN_POSTS:'/admin/posts'
-
+  ADMIN_POSTS:'/admin/posts',
+  SETTINGS: "./settings"
 }
 function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,7 +19,8 @@ function Navigation() {
     { path: ROUTES.HOME, label: "🏠 All Posts" },
     // { path: "/posts", label: "Published Blog" },
     { path: ROUTES.NEWPOST, label: "📔 +New Posts" },
-    { path: ROUTES.SAVEDRAFT, label: "📃 Draft Posts"}
+    { path: ROUTES.SAVEDRAFT, label: "📃 Draft Posts"},
+    { path: ROUTES.SETTINGS, label: "⚙️ Settings"},
     // { path: "/profile", label: "Profile" },
   ];
 

@@ -1,19 +1,35 @@
+import ThemeToggle from "./contexts/ThemeToggle";
+import { useEffect } from "react";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router/index"
-import { useTheme } from "./contexts/ThemeProvider";
-import ThemeToggle from "./contexts/ThemeToggle";
+import { ThemeProvider } from "./contexts/ThemeProvider";
+import { usePreferences } from "./contexts/PreferencesContext";
 
 function App() {
   // const [posts, setPosts] = useState(initialPosts);
-  const { toggleTheme, isDark } = useTheme();
+  // const { toggleTheme, isDark } = useTheme();
+  const { preferences } = usePreferences(); 
+  useEffect(() => {
+    document.documentElement.setAttribute(
+      "data-font-size",
+      preferences.fontSize
+    );
+    document.documentElement.setAttribute(
+      "data-layout-density",
+      preferences.layoutDensity
+    );
+  }, [preferences]);
+
   return (
     <>
+      <ThemeProvider>
       <div className="app">
         <main className="main-content">
           <ThemeToggle />
           <RouterProvider router = {router} />
       </main>
     </div>
+    </ThemeProvider>
     </>
   )
 }

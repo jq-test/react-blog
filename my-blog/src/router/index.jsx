@@ -1,12 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
+import { posts as initialPosts } from "../data/posts";
+import { addPost } from "../utils/addPost";
+import { getPost } from "../utils/getPost"
 import Layout from "../components/Layout/Layout";
 import BlogList from "../components/BlogList/Bloglist";
 import PostEditor from "../components/PostEditor/PostEditor"
 import NotFound from "../components/NotFound/NotFound";
 import SavedDraft from "../components/PostEditor/SavedDrafts"
-import { posts as initialPosts } from "../data/posts";
-import { addPost } from "../utils/addPost";
-import { getPost } from "../utils/getPost"
+import Settings from "../Settings/Settings"
 import PostDetail from "../components/PostDetail/PostDetail";
 // import Root from "../router/root"
 // import NewPost from "../components/NewPost/NewPost";
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
       {
         path: "savedraft",
         element: <SavedDraft />
+      },
+      {
+        path: "settings",
+        element: <Settings />
       }
     ],
   },

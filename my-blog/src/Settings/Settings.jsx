@@ -2,9 +2,11 @@
 // Update settings in real-tmie
 // Provide reset button to revert to default settings.
 
-import { useTheme } from '../../contexts/ThemeContext';
-import { usePreferences } from '../../contexts/PreferencesContext';
-import './Settings.css';
+// import { useTheme } from '../../contexts/ThemeContext';
+// import { usePreferences } from '../../contexts/PreferencesContext';
+import { useTheme } from '../hooks/useTheme';
+import { usePreferences } from '../contexts/PreferencesContext';
+// import './Settings.css';
 
 function Settings() {
   const { theme, toggleTheme } = useTheme();
@@ -22,6 +24,7 @@ function Settings() {
             type="checkbox"
             checked={theme === 'dark'}
             onChange={toggleTheme}
+            title={theme === 'dark' ? "Dark Mode" : "Light Mode"}
           />
         </label>
       </section>

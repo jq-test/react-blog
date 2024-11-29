@@ -11,9 +11,7 @@ const defaultPreferences = {
   fontSize: 'base',
   reducedMotion: false,
   language: 'en',
-  autoplayVideos: true,
-  emailNotifications: true,
-  layoutDensity: 'comfortable'
+  layoutDensity: 'comfortable',
 };
 
 // Save, update, reset user preference to localStorage 

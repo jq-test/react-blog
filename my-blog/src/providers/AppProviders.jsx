@@ -1,5 +1,5 @@
 //Share state and logics with all child components, so accessible w/o passing props.
-import { ThemeProvider } from '../contexts/ThemeContext';
+import { ThemeProvider } from '../contexts/ThemeProvider';
 import { PreferencesProvider } from '../contexts/PreferencesContext';
 import { BlogProvider } from '../contexts/BlogContext';
 import PropTypes from 'prop-types';

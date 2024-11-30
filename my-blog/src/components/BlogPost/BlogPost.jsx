@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./BlogPost.module.css";
 import CommentSection from "../CommentSection/CommentSection";
-import LikeButton from "../LikeButton/LikeButton2";
+// import LikeButton from "../LikeButton/LikeButton2";
+import LikeButton from "../LikeButton/LikeButton";
 import { calculateReadTime } from "../../utils/readTime";
+import PageTransition from "../PageTransition/PageTransition";
 
 function BlogPost({ id, title, content, author, date, isPublished }) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -22,6 +24,7 @@ function BlogPost({ id, title, content, author, date, isPublished }) {
     : content.slice(0, 200) + (content.length > 200 ? "..." : "");
 
   return (
+    <PageTransition>
     <article className={styles.blogPost}>
       <div className={styles.postHeader}>
         <h2 className={styles.postTitle}>{title}</h2>
@@ -46,6 +49,7 @@ function BlogPost({ id, title, content, author, date, isPublished }) {
       </span>
       <LikeButton initialLikes={0} />
     </article>
+    </PageTransition>
   );
 }
 

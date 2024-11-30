@@ -2,12 +2,14 @@ import { useLoaderData } from "react-router-dom";
 import PropTypes from "prop-types";
 import styles from "../BlogPost/BlogPost.module.css";
 import CommentSection from "../CommentSection/CommentSection";
-import LikeButton from "../LikeButton/LikeButton2";
+import LikeButton from "../LikeButton/LikeButton";
+import PageTransition from "../PageTransition/PageTransition";
 
 function PostDetail() {
   const { post } = useLoaderData();
 
   return (
+    <PageTransition>
     <article className={styles.blogPost}>
       <div className={styles.postHeader}>
         <h2 className={styles.postTitle}>{post.title}</h2>
@@ -27,6 +29,7 @@ function PostDetail() {
       </span>
       <LikeButton initialLikes={0} />
     </article>
+    </PageTransition>
   );
 }
 

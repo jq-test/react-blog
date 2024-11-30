@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 
-const pageVariants = {
+export const pageVariants = {
   initial: {
     opacity: 0,
     x: -20

@@ -26,6 +26,7 @@ function LikeButton({ initialLikes = 0, onLike }) {
       >
         <svg 
           viewBox="0 0 24 24" 
+          width="18"
           className="like-button__icon"
         >
           <motion.path

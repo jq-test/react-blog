@@ -1,5 +1,5 @@
 import Skeleton from '../Skeleton/Skeleton';
-import './LoadingState.css';
+// import './LoadingState.css';
 
 function PostSkeleton() {
   return (

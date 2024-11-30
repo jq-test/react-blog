@@ -9,6 +9,7 @@ import BlogFilters from "../BlogFilters/BlogFilters";
 import BlogPost from "../BlogPost/BlogPost";
 import Pagination from "../Pagination/Pagination";
 import "./BlogList.module.css";
+import AnimatedList from "../AnimatedList/AnimatedList"
 
 const POSTS_PER_PAGE = 5;
 
@@ -65,10 +66,16 @@ function BlogList() {
       {currentPosts.length > 0 ? (
         <>
           <div className="blog-posts">
+          <AnimatedList
+            items={currentPosts}
+            renderItem={(post) => <BlogPost key={post.id} {...post} />}
+            />
+          </div>
+          {/* <div className="blog-posts">
             {currentPosts.map((post) => (
               <BlogPost key={post.id} {...post} />
             ))}
-          </div>
+          </div> */}
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}

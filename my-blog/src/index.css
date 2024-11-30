@@ -170,6 +170,11 @@ main, nav {
   margin-bottom: 0.5rem;
 }
 
+.reduced-motion * {
+  animation: none !important;
+  transition: none !important;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

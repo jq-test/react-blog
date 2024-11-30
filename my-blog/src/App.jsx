@@ -21,7 +21,8 @@ function App() {
 
   return (
     <> 
-      <div className="app">
+      {/* <div className="app"> */}
+      <div className={`app ${preferences.reducedMotion ? 'reduced-motion': ''}`}>
         <main className="main-content">
           {/* <ThemeToggle /> */}
           <RouterProvider router = {router} />

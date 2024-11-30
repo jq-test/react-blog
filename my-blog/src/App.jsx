@@ -1,8 +1,19 @@
 // import ThemeToggle from "./contexts/ThemeToggle";
-import { useEffect } from "react";
-import { RouterProvider } from "react-router-dom";
+
+import { useEffect, Suspense, lazy } from "react";
+import { RouterProvider} from "react-router-dom";
 import { router } from "./router/index"
 import { usePreferences } from "./contexts/PreferencesContext";
+import LoadingSpinner from './components/LoadingSpinner';
+import ErrorBoundary from './components/ErrorBoundary';
+
+// Lazy load route components
+const Home = lazy(() => import('./pages/Home'));
+const BlogList = lazy(() => import('./pages/BlogList'));
+const PostDetail = lazy(() => import('./pages/PostDetail'));
+const Editor = lazy(() => import('./pages/Editor'));
+const Profile = lazy(() => import('./pages/Profile'));
+const Settings = lazy(() => import('./pages/Settings'));
 
 function App() {
   // const [posts, setPosts] = useState(initialPosts);
@@ -21,13 +32,15 @@ function App() {
 
   return (
     <> 
-      {/* <div className="app"> */}
+    <ErrorBoundary>
+    <Suspense fallback={<LoadingSpinner />}>
       <div className={`app ${preferences.reducedMotion ? 'reduced-motion': ''}`}>
         <main className="main-content">
-          {/* <ThemeToggle /> */}
           <RouterProvider router = {router} />
       </main>
     </div>
+    </Suspense>
+    </ErrorBoundary>
     </>
   )
 }

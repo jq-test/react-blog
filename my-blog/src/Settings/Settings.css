@@ -3,7 +3,8 @@
 }
 .setting-name {
     margin: 0.25rem;
+    padding: 1rem 0.25rem;
 }
-.settings-sectino {
+.settings-section {
     padding: 0.5rem;
 }

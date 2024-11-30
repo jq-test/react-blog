@@ -4,8 +4,8 @@ import { useEffect, Suspense, lazy } from "react";
 import { RouterProvider} from "react-router-dom";
 import { router } from "./router/index"
 import { usePreferences } from "./contexts/PreferencesContext";
-import LoadingSpinner from './components/LoadingSpinner';
-import ErrorBoundary from './components/ErrorBoundary';
+import LoadingSpinner from './components/LoadingState/LoadingState';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 
 // Lazy load route components
 const Home = lazy(() => import('./pages/Home'));

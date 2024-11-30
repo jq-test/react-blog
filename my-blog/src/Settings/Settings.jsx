@@ -7,6 +7,7 @@
 import { useTheme } from '../hooks/useTheme';
 import { usePreferences } from '../contexts/PreferencesContext';
 import { useTranslation } from "react-i18next";
+import { useEffect } from 'react';
 import './Settings.css';
 
 function Settings() {
@@ -21,6 +22,9 @@ function Settings() {
     localStorage.setItem("language", newLanguage);
   };
 
+  useEffect (() => {
+    i18n.changeLanguage(preferences.language);
+  }, [preferences.language, i18n])
   const languages = [
     { value: "en", label: t("English") },
     { value: "es", label: t("Español") },

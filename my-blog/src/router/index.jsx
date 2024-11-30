@@ -7,7 +7,7 @@ import BlogList from "../components/BlogList/Bloglist";
 import PostEditor from "../components/PostEditor/PostEditor"
 import NotFound from "../components/NotFound/NotFound";
 import SavedDraft from "../components/PostEditor/SavedDrafts"
-import Settings from "../Settings/Settings"
+import Settings from "../settings/Settings"
 import PostDetail from "../components/PostDetail/PostDetail";
 // import Root from "../router/root"
 // import NewPost from "../components/NewPost/NewPost";

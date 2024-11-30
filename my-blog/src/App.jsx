@@ -1,4 +1,4 @@
-import ThemeToggle from "./contexts/ThemeToggle";
+// import ThemeToggle from "./contexts/ThemeToggle";
 import { useEffect } from "react";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router/index"
@@ -20,10 +20,10 @@ function App() {
   }, [preferences]);
 
   return (
-    <>
+    <> 
       <div className="app">
         <main className="main-content">
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
           <RouterProvider router = {router} />
       </main>
     </div>

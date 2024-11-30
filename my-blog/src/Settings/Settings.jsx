@@ -6,7 +6,7 @@
 // import { usePreferences } from '../../contexts/PreferencesContext';
 import { useTheme } from '../hooks/useTheme';
 import { usePreferences } from '../contexts/PreferencesContext';
-// import './Settings.css';
+import './Settings.css';
 
 function Settings() {
   const { theme, toggleTheme } = useTheme();

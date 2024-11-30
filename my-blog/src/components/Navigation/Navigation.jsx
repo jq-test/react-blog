@@ -1,5 +1,6 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { useState } from "react";
+import ThemeToggle from "../../contexts/ThemeToggle"
 import "./Navigation.css";
 
 export const ROUTES = {
@@ -31,10 +32,10 @@ function Navigation() {
   return (
     <nav className="navigation breadcrumb">
       <div className="navigation__brand">
-      <h1><header className="blog-header sticky"> 
-          My Cool Blog 😎
-      </header></h1>
-    
+      <ThemeToggle />
+      <header className="blog-header sticky animate__animated animate__bounce"> 
+          <h1 className="animate__animated animate__jackInTheBox"> My Cool Blog 😎 </h1>
+      </header>
       {/* <button
         className="navigation__toggle"
         onClick={toggleMenu}
@@ -44,7 +45,7 @@ function Navigation() {
         <span className="navigation__toggle-icon"></span>
       </button> */}
     
-      <ul className={`navigation__menu ${isMenuOpen ? "is-open" : ""}`}>
+      <ul className={`animate__animated animate__slideInLeft navigation__menu ${isMenuOpen ? "is-open" : ""}`}>
         {navItems.map((item) => (
           <li key={item.path} className="navigation__item center-text">
             <NavLink
@@ -57,7 +58,7 @@ function Navigation() {
               {item.label}
             </NavLink>
           </li>
-        ))}
+        ))}        
       </ul>
         </div>
     </nav>

@@ -10,7 +10,7 @@ function Layout() {
       <Navigation />
 
       <div className="layout__content">
-        <main className="layout__main">
+        <main className="layout__main ">
           <Outlet />
         </main>
 

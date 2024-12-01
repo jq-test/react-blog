@@ -19,51 +19,16 @@ react-blog/
 ├── vite.config.js
 └── src/
     ├── components/
-    │   └── AnimatedList
-    │   └── BlogFilter
-    │   └── BlogList
-    │   └── BlogPost
-    │   └── BlogSearch
-    │   └── CommentSection
-    │   └── Layout
-    │   └── LikeButton
-    │   └── LoadingState
-    │   └── Modal
-    │   └── Navigation
-    │   └── NotFound
-    │   └── PageTransition
-    │   └── Pagination
-    │   └── PostDetail
-    │   └── PostEditor
-    │   └── RichTextEditor
-    │   └── Sidebar
-    │   └── Skeleton
-    │   └── TagInput
     ├── contexts/
-    │   └── BlogContext.jsx
-    │   └── PreferenceContext.jsx
-    │   └── ThemeErrorBoundary.jsx
-    │   └── ThemeProvider.jsx
-    │   └── ThemeToggle.jsx
     ├── data/
-    │   └── post.js
-    │   └── themes.js
     ├── hooks/
-    │   └── useAuth.js
-    │   └── useFilter.js
-    │   └── useForm.js
-    │   └── useImageHandler.js
-    │   └── usePagination.js
-    │   └── usePost.js
-    │   └── useSearch.js
-    │   └── useTheme.js
-    │   └── useValidateForm.js
+    ├── pages/
     ├── providers/
-    │   └── AppProviders
     ├── router/
-    ├── Settings/
+    ├── settings/
     ├── utils/
     ├── App.jsx
+    ├── i18n.jsx
     ├── main.jsx
     └── index.css
 ```

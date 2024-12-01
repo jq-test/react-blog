@@ -5,4 +5,5 @@
 export function addPost(post, posts, setPosts) {
     post.id = posts.length + 1;
     setPosts((prev) => [...prev, post]);
+    localStorage.setItem("blog_posts", JSON.stringify([post, ...posts]));
 }

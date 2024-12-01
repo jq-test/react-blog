@@ -44,6 +44,9 @@
   .postAction {
     display: inline-flex;
   }
+  .blog-post__content {
+    word-wrap: break-word;
+  }
   
   /* Responsive Design */
   @media (max-width: 768px) {

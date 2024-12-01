@@ -10,13 +10,13 @@ import Button from "@mui/joy/Button";
 import Stack from "@mui/joy/Stack";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
+import { addPost as addPostUtil } from "../../utils/addPost";
 
 // function PostEditor({ addPost }) {
   function PostEditor({ addPost, posts }) {
   const { validateField } = useValidation();
   const { file, handleImage } = useImageHandler();
-  // const [allPosts, setPosts] = useState(posts);
-  // const [allPosts, setPosts] = useState(posts);
+  const [allPosts, setPosts] = useState(posts);
 
   const initializeForm = () => {
     //Get saved form data from local storage
@@ -108,10 +108,10 @@ import Alert from "@mui/material/Alert";
         ...formData,
         author: "JQ",
         readTime: 1,
-        date: new Date().toLocaleDateString(),
+        date: new Date().toLocaleDateString("en-CA"),
       };
       if (formData.isPublished) {
-        addPost(newPost);
+        addPostUtil(newPost, allPosts, setPosts);
         setNotification({
           open: true,
           message: "Post published successfully!",

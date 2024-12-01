@@ -37,7 +37,7 @@ export function usePosts() {
 
   const updatePost = useCallback((id, updates) => {
     setPosts((prevPosts) =>
-      prevPosts.map((post) => (post.id === id ? { ...post, ...updates } : post))
+      prevPosts.map((post) => (post.id === id ? { ...updates, ...post } : post))
     )
   }, [])
 

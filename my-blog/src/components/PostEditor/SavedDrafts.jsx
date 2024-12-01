@@ -32,7 +32,6 @@ const SavedDrafts = () => {
             <p>{draft.tags.join(", ")}</p>
             <p>{draft.author}</p>
             <p>{draft.date}</p>
-            <p>{draft.timestamp} </p>
             <button onClick={() => handleEdit(draft)}>Edit</button>
             <button onClick={() => handleDelete(index)}>Delete</button>
           </li>

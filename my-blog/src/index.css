@@ -160,6 +160,9 @@ main, nav {
   text-decoration: none;
   color: #666;
 }
+.break-word {
+  word-break: break-word;
+}
 .sticky {
   position: sticky;
   top: 0;

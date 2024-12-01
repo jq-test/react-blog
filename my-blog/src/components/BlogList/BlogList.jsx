@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useLoaderData } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSearch } from "../../hooks/useSearch";
 import { useFilters } from "../../hooks/useFilters";
 import { usePagination } from "../../hooks/usePagination";
@@ -15,7 +15,15 @@ const POSTS_PER_PAGE = 5;
 
 // function BlogList({ posts }) {
 function BlogList() {
-  const { posts } = useLoaderData();
+  const { posts: initialPosts } = useLoaderData();
+  const [posts, setPosts] = useState(initialPosts);
+  
+  useEffect(() => {
+    const storedPosts = localStorage.getItem("blog_posts")
+    if (storedPosts) {
+      setPosts(JSON.parse(storedPosts))
+    }
+  }, [])
 
   const {
     filters,

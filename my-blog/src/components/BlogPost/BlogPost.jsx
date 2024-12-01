@@ -35,7 +35,7 @@ function BlogPost({ id, title, content, author, date, isPublished }) {
         </div>
       </div>
 
-      <div className="blog-post__content">
+      <div className="blog-post__content break-word">
         <p> {displayContent} </p>
         {content.length > 200 && (
           <button onClick={toggleContent} className={styles.postExpand}>

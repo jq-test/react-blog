@@ -1,14 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
 import { posts as initialPosts } from "../data/posts";
 import { addPost } from "../utils/addPost";
-import { getPost } from "../utils/getPost"
+import { getPost } from "../utils/getPost";
 import Layout from "../components/Layout/Layout";
 import BlogList from "../components/BlogList/Bloglist";
-import PostEditor from "../components/PostEditor/PostEditor"
+import PostEditor from "../components/PostEditor/PostEditor";
 import NotFound from "../components/NotFound/NotFound";
-import SavedDraft from "../components/PostEditor/SavedDrafts"
-import Settings from "../settings/Settings"
+import SavedDraft from "../components/PostEditor/SavedDrafts";
+import Settings from "../settings/Settings";
 import PostDetail from "../components/PostDetail/PostDetail";
+import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
+import Login from "../pages/Login";
+import GuestRoute from "../components/ProtectedRoute/GuestRoute";
 // import Root from "../router/root"
 // import NewPost from "../components/NewPost/NewPost";
 // import EditPost from "../components/EditPost/EditPost";
@@ -17,7 +20,7 @@ import PostDetail from "../components/PostDetail/PostDetail";
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />, //Contains Nav, Outlet, Sidebar 
+    element: <Layout />, //Contains Nav, Outlet, Sidebar
     errorElement: <NotFound />,
     children: [
       {
@@ -38,36 +41,56 @@ export const router = createBrowserRouter([
         // path: ":id/edit",
         path: "newpost",
         // element: <PostEditor addPost={addPost}/>,
-        element: <PostEditor addPost={addPost} posts={initialPosts}/>,
+        element: (
+          <ProtectedRoute>
+            <PostEditor addPost={addPost} posts={initialPosts} />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "savedraft",
-        element: <SavedDraft />
+        element: (
+          <ProtectedRoute>
+            <SavedDraft />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "settings",
-        element: <Settings />
-      }
+        element: (
+          <GuestRoute>
+            <Settings />
+          </GuestRoute>
+        ),
+      },
+      {
+        path: "login",
+        element: (
+          <GuestRoute>
+            <Login />
+          </GuestRoute>
+        ),
+      },
     ],
   },
 ]);
-      // path: "posts",
-      // children: [
-        //   {
-            //     index: true,
-            //     element: <BlogList posts={posts}/>,
-            //   }
-            //   {
-                //     path: ":id",
-                //     element: <PostDetail />,
-                //   },
-                //   {
-                    //     path: "new",
-                    //     element: <NewPost />,
-                    //   },
-    //   {
-    //     path: "profile",
-    //     element: <Profile />,
-    //   },
-    // ],
+// path: "posts",
+// children: [
+//   {
+//     index: true,
+//     element: <BlogList posts={posts}/>,
+//   }
+//   {
+//     path: ":id",
+//     element: <PostDetail />,
+//   },
+//   {
+//     path: "new",
+//     element: <NewPost />,
+//   },
+//   {
+//     path: "profile",
+//     element: <Profile />,
+//   },
+// ],
 //   },

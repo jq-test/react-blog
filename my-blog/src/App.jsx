@@ -6,6 +6,8 @@ import { router } from "./router/index"
 import { usePreferences } from "./contexts/PreferencesContext";
 import LoadingSpinner from './components/LoadingState/LoadingState';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
+import { Provider } from "react-redux";
+import store from "./data/store";
 
 // Lazy load route components
 const Home = lazy(() => import('./pages/Home'));
@@ -36,7 +38,9 @@ function App() {
     <Suspense fallback={<LoadingSpinner />}>
       <div className={`app ${preferences.reducedMotion ? 'reduced-motion': ''}`}>
         <main className="main-content">
-          <RouterProvider router = {router} />
+          <Provider store={store}>
+            <RouterProvider router = {router} />
+          </Provider>
       </main>
     </div>
     </Suspense>

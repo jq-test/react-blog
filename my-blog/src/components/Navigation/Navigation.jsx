@@ -74,7 +74,7 @@ function Navigation() {
               </li>
             ) : (
               <li>
-                <NavLink to={ROUTES.LOGIN} activeClassName="active"></NavLink>
+                <NavLink to={ROUTES.LOGIN}></NavLink>
               </li>
             )}
           </ul>
@@ -90,7 +90,6 @@ function Navigation() {
               <NavLink
                 key={item.path}
                 to={item.path}
-                activeClassName="active"
                 onClick={toggleMenu}
               >
                 {item.label}
@@ -101,7 +100,6 @@ function Navigation() {
             ) : (
               <NavLink
                 to={ROUTES.LOGIN}
-                activeClassName="active"
                 onClick={toggleMenu}
               >
                 {" "}

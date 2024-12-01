@@ -1,0 +1,30 @@
+.saved-drafts-container {
+    padding: 1rem;
+  }
+  
+  .saved-drafts-list {
+    list-style-type: none;
+  }
+  .saved-draft-content {
+      overflow-wrap: break-word;
+  }
+  .saved-draft-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  
+  .saved-draft-item h2 {
+    margin: 0 0 10px 0;
+  }
+  /* 
+  .saved-draft-item p {
+    margin: 5px 0;
+  } */
+  
+  .saved-draft-item button {
+    margin-right: 10px;
+  }

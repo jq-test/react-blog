@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { addDraft } from "../../utils/addDraft"
 import "./PostEditor.css";
 import TagInput from "../TagInput/TagInput";
 import RichTextEditor from "../RichTextEditor/RichTextEditor";
@@ -7,12 +8,14 @@ import useValidation from "../../hooks/useValidateForm";
 import useImageHandler from "../../hooks/useImageHandler";
 import Button from "@mui/joy/Button";
 import Stack from "@mui/joy/Stack";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
 
 // function PostEditor({ addPost }) {
   function PostEditor({ addPost, posts }) {
   const { validateField } = useValidation();
   const { file, handleImage } = useImageHandler();
-  const [allPosts, setPosts] = useState(posts);
+  // const [allPosts, setPosts] = useState(posts);
   // const [allPosts, setPosts] = useState(posts);
 
   const initializeForm = () => {
@@ -35,6 +38,11 @@ import Stack from "@mui/joy/Stack";
   // const [saveDraft, setSaveDraft] = useState(false);
   const [errors, setErrors] = useState({});
   const [isDirty, setIsDirty] = useState({});
+  const [notification, setNotification] = useState({
+    open: false,
+    message: "",
+    severity: "success",
+  })
 
   //Watches for changes and save data to local storage
   useEffect(() => {
@@ -102,10 +110,33 @@ import Stack from "@mui/joy/Stack";
         readTime: 1,
         date: new Date().toLocaleDateString(),
       };
+      if (formData.isPublished) {
+        addPost(newPost);
+        setNotification({
+          open: true,
+          message: "Post published successfully!",
+          severity: "success",
+        });
+      } else {
+        addDraft(newPost);
+        setNotification({
+          open: true,
+          message: "Draft saved successfully!",
+          severity: "info",
+        });
+      }
       // addPost(newPost);
-      addPost(newPost, allPosts, setPosts)
+      // addPost(newPost, allPosts, setPosts)
     }
   };
+  const handleCloseNotification = () => {
+    setNotification({...notification, open: false});
+  };
+
+  const handleEditDraft = (draft) => {
+    setFormData(draft);
+  }
+
   //Function for Rich Text Editor
   const handleContentChange = (newContent) => {
     setFormData((prev) => ({
@@ -213,6 +244,20 @@ import Stack from "@mui/joy/Stack";
           {formData.isPublished ? "Publish Post" : "Save Draft"}
         </Button>
       </Stack>
+
+      <Snackbar
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
+          open={notification.open}
+          autoHideDuration={6000}
+          onClose={handleCloseNotification}
+        >
+          <Alert
+            onClose={handleCloseNotification}
+            severity={notification.severity}
+          >
+            {notification.message}
+          </Alert>
+      </Snackbar>
 
       {/* Preview blog post */}
       <Modal
